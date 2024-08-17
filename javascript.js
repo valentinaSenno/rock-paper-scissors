@@ -15,15 +15,22 @@ if (computerPlayer === 1) {
 
 function getHumanChoice() {
     let choice = prompt("Please enter your choice (Rock, Paper, Scissors):");
-    if (choice.toLowerCase() === "rock") {
-        return "Rock";
-    } else if (choice.toLowerCase() === "paper") {
-        return "Paper";
-    } else if (choice.toLowerCase() === "scissors") {
-        return "Scissors";
+
+        if (choice === null) {
+        return null;  
+    }
+    
+    choice = choice.trim().toLowerCase();
+
+        if (choice === 'rock') {
+        return 'Rock';
+    } else if (choice === 'paper') {
+        return 'Paper';
+    } else if (choice === 'scissors') {
+        return 'Scissors';
     } else {
         alert('Invalid choice. Please enter Rock, Paper, or Scissors.');
-        return getHumanChoice();
+        return getHumanChoice(); 
     }
 }
 
