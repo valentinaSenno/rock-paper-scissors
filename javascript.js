@@ -8,7 +8,6 @@ function getComputerChoice() {
         return "Scissors";
     }   
 }
- 
 
 function getHumanChoice() {
     let choice = prompt("Please enter your choice (Rock, Paper, Scissors):");
@@ -37,6 +36,8 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
     humanChoice = getHumanChoice();
     computerChoice = getComputerChoice();
+
+      
     if (humanChoice === computerChoice) {
         console.log(`It's a tie! Both chose ${humanChoice}`);
     } else if (
@@ -45,9 +46,24 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === 'Paper' && computerChoice === 'Rock')
     ) {
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
     } else {
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+    }
+
+}
+
+function playGame() {
+
+    for (let i = 0; i < 5; i++) {
+        playRound();
+    }
+    if (humanScore > computerScore) {
+        console.log("You are the winner!");
+    } else {
+        console.log("Try again"); 
     }
 }
 
-playRound();
+playGame()
