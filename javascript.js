@@ -4,6 +4,7 @@ document.getElementById("scissors").addEventListener('click', () => playRound('S
 const resultText = document.getElementById("result");
 const humanScoreText = document.getElementById("human-score");
 const computerScoreText = document.getElementById("computer-score");
+const choiceDiv = document.getElementById("choice");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -19,7 +20,7 @@ function getComputerChoice() {
     }   
 }
 
-function getHumanChoice() {
+/*function getHumanChoice() {
     let choice = prompt("Please enter your choice (Rock, Paper, Scissors):");
 
         if (choice === null) {
@@ -38,12 +39,13 @@ function getHumanChoice() {
         alert('Invalid choice. Please enter Rock, Paper, or Scissors.');
         return getHumanChoice(); 
     }
-}
+}*/ 
 
 
-function playRound(humanChoice, computerChoice) {
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
+
+
+function playRound(humanChoice) {
+        computerChoice = getComputerChoice();
 
     
       
@@ -66,9 +68,12 @@ function playRound(humanChoice, computerChoice) {
     if (humanScore >= 5) {
         resultText.innerHTML = 'You win!' + `   <button id="resetScore">Restart game</button>`;
         document.getElementById("resetScore").addEventListener('click', reset);
+        choiceDiv.classList.add("hidden");
+        
     } else if (computerScore >= 5) {
         resultText.innerHTML = 'The computer is the winner!' + `   <button id="resetScore">Restart game</button>`;
         document.getElementById("resetScore").addEventListener('click', reset);
+        choiceDiv.classList.add("hidden");
     }
 }
 
@@ -78,6 +83,7 @@ function reset() {
     humanScoreText.innerText = '';
     computerScoreText.innerText = '';
     resultText.innerHTML = '';
+    choiceDiv.classList.remove("hidden");
 }
 
  /* function playGame() {
